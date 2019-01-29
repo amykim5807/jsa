@@ -1,103 +1,103 @@
-msa_rank,states
-Birmingham-Hoover (61),AL
-Daphne-Fairhope-Foley (90),AL
-Huntsville (69),AL
-Montgomery (94),AL
-Tuscaloosa (99),AL
-Little Rock-North Little Rock-Conway (82),AR
-Fayetteville-Springdale-Rogers (59),AR-MO
-Tucson (23),AZ
-Gainesville (68),FL
-Jacksonville (74),FL
-Orlando-Kissimmee-Sanford (50),FL
-Palm Bay-Melbourne-Titusville (79),FL
-Pensacola-Ferry Pass-Brent (95),FL
-Tallahassee (88),FL
-Tampa-St. Petersburg-Clearwater (35),FL
-Atlanta-Sandy Springs-Roswell (13),GA
-Savannah (99),GA
-Warner Robins (101),GA
-Columbus (81),GA-AL
-Des Moines-West Des Moines (7),IA
-Iowa City (20),IA
-Davenport-Moline-Rock Island (72),IA-IL
-Boise City (41),ID
-Idaho Falls (73),ID
-Champaign-Urbana (5),IL
-Decatur (84),IL
-Peoria (58),IL
-Bloomington (38),IN
-Fort Wayne (55),IN
-Indianapolis-Carmel-Anderson (10),IN
-South Bend-Mishawaka (44),IN-MI
-Manhattan (40),KS
-Wichita (46),KS
-Lexington-Fayette (28),KY
-Louisville/Jefferson County (51),KY-IN
-Baton Rouge (77),LA
-New Orleans-Metairie (63),LA
-Springfield (60),MA
-Ann Arbor (30),MI
-Battle Creek (29),MI
-Detroit-Warren-Dearborn (24),MI
-Grand Rapids-Wyoming (11),MI
-Lansing-East Lansing (31),MI
-Saginaw (89),MI
-Rochester (76),MN
-Duluth (86),MN-WI
-Columbia (52),MO
-Springfield (92),MO
-St. Louis (12),MO-IL
-Kansas City (26),MO-KS
-Jackson (80),MS
-Asheville (67),NC
-Greensboro-High Point (39),NC
-Greenville (83),NC
-Winston-Salem (63),NC
-Charlotte-Concord-Gastonia (32),NC-SC
-Fargo (70),ND-MN
-Lincoln (48),NE
-Omaha-Council Bluffs (25),NE-IA
-Atlantic City-Hammonton (102),NJ
-Albuquerque (62),NM
-Albany-Schenectady-Troy (16),NY
-Buffalo-Cheektowaga-Niagara Falls (15),NY
-Ithaca (8),NY
-Rochester (1),NY
-Utica-Rome (3),NY
-Akron (14),OH
-Cleveland-Elyria (6),OH
-Columbus (4),OH
-Dayton (19),OH
-Toledo (54),OH
-Cincinnati (9),OH-KY-IN
-Oklahoma City (33),OK
-Tulsa (47),OK
-Eugene (78),OR
-Erie (65),PA
-Harrisburg-Carlisle (43),PA
-Lancaster (71),PA
-Pittsburgh (2),PA
-Allentown-Bethlehem-Easton (36),PA-NJ
-Columbia (66),SC
-Greenville-Anderson-Mauldin (37),SC
-Sioux Falls (91),SD
-Johnson City (98),TN
-Knoxville (44),TN
-Nashville-Davidson--Murfreesboro--Franklin (53),TN
-Chattanooga (96),TN-GA
-Memphis (56),TN-MS-AR
-College Station-Bryan (57),TX
-Dallas-Fort Worth-Arlington (17),TX
-Houston-The Woodlands-Sugar Land (21),TX
-Lubbock (87),TX
-San Antonio-New Braunfels (41),TX
-Ogden-Clearfield (33),UT
-Lynchburg (97),VA
-Roanoke (49),VA
-Kennewick-Richland (93),WA
-Spokane-Spokane Valley (74),WA
-Green Bay (18),WI
-Janesville-Beloit (22),WI
-Racine (27),WI
-Wheeling (85),WV-OH
+"data.overall_rank","msa_rank","states"
+61,"Birmingham-Hoover","AL"
+90,"Daphne-Fairhope-Foley","AL"
+69,"Huntsville","AL"
+94,"Montgomery","AL"
+99,"Tuscaloosa","AL"
+82,"Little Rock-North Little Rock-Conway","AR"
+59,"Fayetteville-Springdale-Rogers","AR-MO"
+23,"Tucson","AZ"
+68,"Gainesville","FL"
+74,"Jacksonville","FL"
+50,"Orlando-Kissimmee-Sanford","FL"
+79,"Palm Bay-Melbourne-Titusville","FL"
+95,"Pensacola-Ferry Pass-Brent","FL"
+88,"Tallahassee","FL"
+35,"Tampa-St. Petersburg-Clearwater","FL"
+13,"Atlanta-Sandy Springs-Roswell","GA"
+99,"Savannah","GA"
+101,"Warner Robins","GA"
+81,"Columbus","GA-AL"
+7,"Des Moines-West Des Moines","IA"
+20,"Iowa City","IA"
+72,"Davenport-Moline-Rock Island","IA-IL"
+41,"Boise City","ID"
+73,"Idaho Falls","ID"
+5,"Champaign-Urbana","IL"
+84,"Decatur","IL"
+58,"Peoria","IL"
+38,"Bloomington","IN"
+55,"Fort Wayne","IN"
+10,"Indianapolis-Carmel-Anderson","IN"
+44,"South Bend-Mishawaka","IN-MI"
+40,"Manhattan","KS"
+46,"Wichita","KS"
+28,"Lexington-Fayette","KY"
+51,"Louisville/Jefferson County","KY-IN"
+77,"Baton Rouge","LA"
+63,"New Orleans-Metairie","LA"
+60,"Springfield","MA"
+30,"Ann Arbor","MI"
+29,"Battle Creek","MI"
+24,"Detroit-Warren-Dearborn","MI"
+11,"Grand Rapids-Wyoming","MI"
+31,"Lansing-East Lansing","MI"
+89,"Saginaw","MI"
+76,"Rochester","MN"
+86,"Duluth","MN-WI"
+52,"Columbia","MO"
+92,"Springfield","MO"
+12,"St. Louis","MO-IL"
+26,"Kansas City","MO-KS"
+80,"Jackson","MS"
+67,"Asheville","NC"
+39,"Greensboro-High Point","NC"
+83,"Greenville","NC"
+63,"Winston-Salem","NC"
+32,"Charlotte-Concord-Gastonia","NC-SC"
+70,"Fargo","ND-MN"
+48,"Lincoln","NE"
+25,"Omaha-Council Bluffs","NE-IA"
+102,"Atlantic City-Hammonton","NJ"
+62,"Albuquerque","NM"
+16,"Albany-Schenectady-Troy","NY"
+15,"Buffalo-Cheektowaga-Niagara Falls","NY"
+8,"Ithaca","NY"
+1,"Rochester","NY"
+3,"Utica-Rome","NY"
+14,"Akron","OH"
+6,"Cleveland-Elyria","OH"
+4,"Columbus","OH"
+19,"Dayton","OH"
+54,"Toledo","OH"
+9,"Cincinnati","OH-KY-IN"
+33,"Oklahoma City","OK"
+47,"Tulsa","OK"
+78,"Eugene","OR"
+65,"Erie","PA"
+43,"Harrisburg-Carlisle","PA"
+71,"Lancaster","PA"
+2,"Pittsburgh","PA"
+36,"Allentown-Bethlehem-Easton","PA-NJ"
+66,"Columbia","SC"
+37,"Greenville-Anderson-Mauldin","SC"
+91,"Sioux Falls","SD"
+98,"Johnson City","TN"
+44,"Knoxville","TN"
+53,"Nashville-Davidson--Murfreesboro--Franklin","TN"
+96,"Chattanooga","TN-GA"
+56,"Memphis","TN-MS-AR"
+57,"College Station-Bryan","TX"
+17,"Dallas-Fort Worth-Arlington","TX"
+21,"Houston-The Woodlands-Sugar Land","TX"
+87,"Lubbock","TX"
+41,"San Antonio-New Braunfels","TX"
+33,"Ogden-Clearfield","UT"
+97,"Lynchburg","VA"
+49,"Roanoke","VA"
+93,"Kennewick-Richland","WA"
+74,"Spokane-Spokane Valley","WA"
+18,"Green Bay","WI"
+22,"Janesville-Beloit","WI"
+27,"Racine","WI"
+85,"Wheeling","WV-OH"

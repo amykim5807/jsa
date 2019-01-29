@@ -1,10 +1,12 @@
+setwd("~/git/jsa")
+
 #install.packages('readstata13')
 library(readstata13)
 library(ggmap)
-source('helper.R')
+source('scripts/R/helper.R')
 
 #Importing Raw Data
-data <- read.dta13("appendix_summary.dta")
+data <- read.dta13("data/appendix_summary.dta")
 data <- data[,-c(1,15,19)]
 
 #Ranking Raw Data
@@ -35,5 +37,5 @@ data$Latitude <- loc$lat
 
 #### EXPORTING DATA ####
 #Writing into new csv
-write.csv(data,'reranked.csv')
-#write.dta(data,'reranked.dta')
+write.csv(data,'data/reranked.csv')
+#write.dta(data,'data/reranked.dta')

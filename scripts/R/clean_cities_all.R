@@ -1,8 +1,9 @@
+setwd("~/git/jsa")
 library(ggmap)
 
 #Importing Raw Data
-data <- read.csv("areacompare.csv")
-source('helper.R')
+data <- read.csv("data/areacompare.csv")
+source('scripts/R/helper.R')
 
 #Renaming Columns, deleting first row and irrelevant columns
 data <- data[-c(1),-c(1,2,4,19) ]
@@ -23,5 +24,5 @@ data$Latitude <- loc$lat
 
 #### EXPORTING DATA ####
 #Writing into new csv
-write.csv(data,'all_data_loc.csv')
+write.csv(data,'data/all_data_loc.csv')
 

@@ -1,10 +1,12 @@
+setwd("~/git/jsa")
+
 library(ggmap)
-source('helper.R')
+source('scripts/R/helper.R')
 
 #### DATA IMPORT ####
 #Importing Raw Data
-data <- read.csv("appendix_edited.csv")
-raw <- read.csv("areacompare.csv")
+data <- read.csv("data/appendix_edited.csv")
+raw <- read.csv("data/areacompare.csv")
 
 #Renaming Columns, deleting first row
 colnames(raw) <- c('Year','MSA code',	'MSA','closest MSA in hours','Total Population', 'Working Age Population','Percent College Grad','Top 20 Grad Programs','Ugrads to Top 20 per Year','House Price', '% Commute < 30 minutes','Viol Crime per 1000',
@@ -54,4 +56,4 @@ merged <- merge(cleaned,raw,by.y="MSA",by.x="MSA",all.x=TRUE)
 
 #### EXPORTING DATA ####
 #Writing into new csv
-write.csv(merged,'merged.csv')
+write.csv(merged,'data/merged.csv')
