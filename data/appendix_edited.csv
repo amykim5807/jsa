@@ -1,0 +1,104 @@
+Place Name,City,Overall,,Population 25-64,,Percent College Grad,Top Science Grad Programs,Top Science Undergraduates,Patents per Worker,,Average House Price,Violent Crimes per Capita,Commute Less than 30 min,,Grouped?
+"Rochester, NY",Rochester,1,,26,,30,26,12,3,,19,28,35,,
+"Pittsburgh, PA",Pittsburgh,2,,10,,23,7,5,30,,35,37,93,,
+"Syracuse/Utica-Rome, NY",,3,,29,,64,27,22,44,,9,33,27,,Y
+"Columbus, OH",,4,,15,,18,8,11,48,,71,34,74,,
+"Cleveland-Elyria, OH",,5,,16,,53,18,10,25,,33,49,83,,
+"Bloomington/Champaign-Urbana, IL",,6,,73,,2,3,4,19,,24,22,6,,Y
+"Indianapolis-Carmel-Anderson/Lafayette-West Lafayette, IN",,7,,11,,29,5,8,27,,46,90,76,,Y
+"Ames/Des Moines-West Des Moines, IA",,8,,44,,7,20,19,21,,61,35,18,,Y
+"Binghamton/Ithaca, NY",,9,,80,,22,4,1,7,,10,13,7,,Y
+"Cincinnati, OH-KY-IN",,10,,13,,33,62,26,22,,56,26,80,,
+"St. Louis, MO-IL",,11,,6,,26,14,14,45,,66,68,89,,
+"Atlanta-Sandy Springs-Roswell, GA",,12,,3,,9,6,6,37,,98,65,102,,
+"Buffalo-Cheektowaga-Niagara Falls, NY",,13,,24,,41,36,36,53,,20,69,38,,
+"Albany-Schenectady-Troy, NY",,14,,33,,11,22,20,5,,82,30,70,,
+"Dallas-Fort Worth-Arlington, TX",,15,,1,,28,32,34,28,,95,45,99,,
+"Akron/Canton-Massillon, OH",,16,,25,,75,82,50,17,,16,29,57,,Y
+"Grand Rapids-Wyoming, MI",,17,,27,,40,99,32,31,,47,41,33,,
+"Dayton, OH",,18,,40,,83,51,51,35,,5,31,34,,
+"Houston-The Woodlands-Sugar Land, TX",,19,,2,,37,15,16,24,,96,89,101,,
+"Cedar Rapids/Iowa City, IA",,20,,70,,8,29,24,15,,65,12,17,,Y
+"Janesville-Beloit/Madison, WI",,21,,38,,3,1,2,12,,99,96,40,,Y
+"Tucson, AZ",,22,,31,,38,13,18,9,,68,70,77,,
+"Detroit-Warren-Dearborn, MI",,23,,4,,52,49,60,6,,48,86,97,,
+"Appleton/Green Bay/Oshkosh, WI",,24,,42,,82,75,48,46,,37,4,15,,Y
+"Omaha-Council Bluffs, NE-IA",,25,,30,,20,55,69,78,,54,55,20,,
+"Lexington-Fayette, KY",,26,,58,,12,16,28,32,,79,25,42,,
+"Kansas City, MO-KS",,27,,14,,16,45,74,34,,70,76,73,,
+"Milwaukee-Waukesha-West Allis/Racine, WI",,28,,17,,31,39,38,26,,81,94,64,,Y
+"Battle Creek/Kalamazoo-Portage, MI",,29,,68,,59,44,40,52,,13,6,23,,Y
+"Ann Arbor/Jackson, MI",,30,,60,,1,2,3,2,,94,47,67,,Y
+"Lansing-East Lansing, MI",,31,,67,,27,10,17,69,,12,67,24,,
+"Logan/Ogden-Clearfield, UT-ID",,32,,45,,42,30,52,42,,101,1,41,,Y
+"Tampa-St. Petersburg-Clearwater, FL",,33,,5,,66,42,47,64,,75,56,95,,
+"Charlotte-Concord-Gastonia, NC-SC",,34,,7,,24,58,43,62,,93,59,94,,
+"Bloomington/Columbus, IN",,35,,97,,13,12,23,10,,51,11,10,,Y
+"Greenville-Anderson-Mauldin, SC",,36,,34,,69,35,30,11,,50,83,65,,
+"Allentown-Bethlehem-Easton, PA-NJ",,37,,36,,70,60,29,20,,78,7,88,,
+"Lawrence/Manhattan/Topeka, KS",,38,,72,,15,21,21,76,,42,40,21,,Y
+"Greensboro-High Point, NC",,39,,41,,72,57,54,57,,29,43,45,,
+"Niles-Benton Harbor/South Bend-Mishawaka, IN-MI",,40,,64,,88,40,25,23,,18,52,30,,Y
+"Oklahoma City, OK",,41,,19,,58,80,45,85,,43,71,56,,
+"Knoxville, TN",,42,,35,,63,38,39,40,,64,58,68,,
+"Blacksburg-Christiansburg-Radford/Roanoke, VA",,43,,62,,67,11,13,29,,73,9,85,,Y
+"Lincoln, NE",,44,,83,,4,23,33,56,,60,38,9,,
+"Orlando-Kissimmee-Sanford, FL",,45,,8,,46,34,58,67,,91,79,100,,
+"Wichita, KS",,46,,48,,48,70,91,60,,8,84,11,,
+"Boise City, ID",,47,,46,,43,91,81,4,,88,14,47,,
+"Tulsa, OK",,48,,28,,84,73,83,66,,27,72,39,,
+"Columbia/Jefferson City, MO",,49,,81,,19,24,35,79,,40,39,13,,Y
+"Louisville-Jefferson County, KY-IN",,50,,22,,73,43,75,70,,55,63,75,,
+"Clarksville/Nashville-Davidson--Murfreesboro--Franklin, TN-KY",,51,,12,,35,25,27,84,,102,92,98,,Y
+"Harrisburg-Carlisle, PA",,52,,53,,36,93,53,36,,63,20,50,,
+"San Antonio-New Braunfels, TX",,53,,9,,77,102,44,71,,58,62,92,,
+"College Station-Bryan, TX",,54,,98,,21,9,15,50,,67,32,3,,
+"Fort Wayne, IN",,55,,71,,86,63,96,41,,2,15,26,,
+"Springfield, MA",,56,,50,,44,19,7,63,,92,78,60,,
+"Birmingham-Hoover, AL",,57,,23,,55,31,61,93,,52,88,91,,
+"Winston-Salem, NC",,58,,47,,93,41,49,58,,38,66,55,,
+"New Orleans-Metairie, LA",,59,,21,,61,37,31,90,,89,82,87,,
+"Erie, PA",,60,,87,,76,56,68,43,,11,18,16,,
+"Peoria, IL",,61,,77,,79,72,73,16,,15,44,19,,
+"Toledo, OH",,62,,51,,87,95,59,51,,6,91,25,,
+"Memphis, TN-MS-AR",,63,,20,,81,100,71,59,,25,102,81,,
+"Fayetteville-Springdale-Rogers, AR-MO",,64,,59,,47,84,64,82,,57,27,32,,
+"Gainesville, FL",,65,,92,,10,17,9,18,,53,87,46,,
+"Asheville, NC",,66,,65,,32,61,82,74,,83,8,36,,
+"Columbia, SC",,67,,39,,34,81,57,81,,32,93,82,,
+"Albuquerque, NM",,68,,32,,39,98,55,33,,84,101,69,,
+"Idaho Falls/Pocatello, ID",,69,,100,,56,52,93,38,,30,5,8,,Y
+"Rochester, MN",,70,,99,,17,50,101,1,,76,2,22,,
+"Palm Bay-Melbourne-Titusville, FL",,71,,54,,62,33,77,13,,72,75,78,,
+"Baton Rouge, LA",,72,,37,,89,28,42,89,,62,81,86,,
+"Huntsville, AL",,73,,63,,14,89,78,14,,69,73,59,,
+"Fargo, ND-MN",,74,,95,,6,85,56,49,,80,23,1,,
+"Davenport-Moline-Rock Island, IA-IL",,75,,76,,94,79,76,54,,14,54,14,,
+"Lancaster, PA",,76,,57,,102,92,46,47,,87,3,66,,
+"Eugene, OR",,77,,79,,68,83,41,55,,100,17,12,,
+"Auburn-Opelika/Columbus, GA-AL",,78,,66,,65,71,62,88,,31,60,49,,Y
+"Jacksonville, FL",,79,,18,,50,96,88,80,,90,80,96,,
+"Decatur/Springfield, IL",,80,,82,,51,53,95,73,,3,97,5,,Y
+"Spokane-Spokane Valley, WA",,81,,56,,60,101,65,61,,86,42,48,,
+"Greenville/New Bern, NC",,82,,86,,74,68,84,77,,21,21,31,,Y
+"Little Rock-North Little Rock-Conway, AR",,83,,43,,49,77,79,94,,45,99,63,,
+"Lubbock, TX",,84,,84,,54,48,66,92,,17,100,2,,
+"Jackson, MS",,85,,52,,57,90,80,99,,34,53,79,,
+"Morgantown/Wheeling, WV-OH",,86,,85,,96,66,63,83,,7,24,53,,Y
+"Duluth, MN-WI",,87,,88,,101,69,67,86,,26,16,28,,
+"Tallahassee, FL",,88,,78,,5,64,37,68,,59,98,58,,
+"Daphne-Fairhope-Foley/Mobile, AL",,89,,49,,99,59,92,96,,36,51,90,,Y
+"Midland/Saginaw, MI",,90,,91,,95,67,100,8,,1,74,37,,Y
+"Kennewick-Richland, WA",,91,,89,,98,47,102,39,,74,10,29,, 
+"Montgomery, AL",,92,,75,,71,54,89,100,,28,61,61,,
+"Sioux Falls, SD",,93,,93,,25,88,97,65,,77,46,4,,
+"Pensacola-Ferry Pass-Brent, FL",,94,,61,,85,65,94,87,,44,77,72,,
+"Springfield, MO",,95,,69,,92,97,72,97,,22,85,43,,
+"Chattanooga, TN-GA",,96,,55,,97,74,86,91,,41,95,71,,
+"Lynchburg, VA",,97,,94,,91,94,85,72,,49,19,62,,
+"Johnson City, TN",,98,,101,,100,78,90,75,,23,36,54,,
+"Savannah, GA",,99,,74,,45,76,98,95,,85,50,84,,
+"Tuscaloosa, AL",,100,,96,,78,86,70,98,,39,57,51,,
+"Warner Robins, GA",,101,,102,,90,87,99,102,,4,48,44,,
+"Atlantic City-Hammonton, NJ",,102,,90,,80,46,87,101,,97,64,52,,
+,,,,,,,,,,,,,,, 

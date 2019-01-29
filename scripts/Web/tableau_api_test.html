@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Map</title>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript"
+	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <script src="tableau.js"></script>
+
+</head>
+
+<body onload="initViz();">
+    <!-- Map Container -->
+    <div id="vizContainer" style="width:800px; height:500px; float:left;"></div>
+
+    <!-- Sliders -->
+    <div class="slidecontainer" style = "width: 200px; float:right;">
+      <input type="range" min="0" max="100" value="33" class="slider" id="pop">
+      <input type="range" min="0" max="100" value="33" class="slider" id="edu">
+      <input type="range" min="0" max="100" value="33" class="slider" id="life">
+    </div>
+
+    <div id = "demo"> adsfasdf</div>
+
+    <script>
+    var slider = document.getElementById("pop");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value; // Display the default slider value
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+
+    </script>
+</body>
+
+</html>
