@@ -1,7 +1,7 @@
 setwd("~/git/jsa")
 
 #Importing Raw Data
-data <- read.csv("data/reranked.csv")
+data <- read.xls("data/appendix_revised.xls")
 
 #Helper Function for Getting State Names
 get_states <- function(loc){

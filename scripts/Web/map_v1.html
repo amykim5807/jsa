@@ -16,19 +16,26 @@
 
     <!-- Sliders -->
     <div class="slidecontainer" style = "width: 200px; float:right;">
-      <input type="range" min="0" max="100" value="33" class="slider" id="pop">
-      <input type="range" min="0" max="100" value="33" class="slider" id="edu">
-      <input type="range" min="0" max="100" value="33" class="slider" id="life">
+      Population:
+      <input type="range" min="0" max="100" value="33" class="slider" id="Population" oninput = "change_val('Population')">
+      Education:
+      <input type="range" min="0" max="100" value="33" class="slider" id="Education" oninput = "change_val('Education')">
+      Lifestyle:
+      <input type="range" min="0" max="100" value="33" class="slider" id="Lifestyle" oninput = "change_val('Lifestyle')">
     </div>
 
-    <div id = "demo"> adsfasdf</div>
+    <div id = "Population_num"> Population: </div>
+    <div id = "Education_num"> adsfasdf </div>
+    <div id = "Lifestyle_num"> adsfasdf </div>
 
     <script>
     var slider = document.getElementById("pop");
     var output = document.getElementById("demo");
-    output.innerHTML = slider.value; // Display the default slider value
-    slider.oninput = function() {
-      output.innerHTML = this.value;
+    output.innerHTML = "Population: ".concat(slider.value); // Display the default slider value
+    function change_val(cat) {
+      var slider = document.getElementById(cat);
+      var output = document.getElementById(cat.concat("_num"))
+      output.innerHTML = cat.concat(": ").concat(slider.value);
     }
 
     </script>
