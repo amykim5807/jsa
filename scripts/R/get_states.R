@@ -1,7 +1,9 @@
+library(gdata)
 setwd("~/git/jsa")
 
 #Importing Raw Data
-data <- read.xls("data/appendix_revised.xls")
+data <- read.xls("data/appendix_revision.xls")
+data <- data[-c(1,2),]
 
 #Helper Function for Getting State Names
 get_states <- function(loc){
@@ -26,15 +28,15 @@ strip_states <- function(loc){
 # }
 
 #List of msas without states
-msa_nostate <- sapply(unlist(data$msa),strip_states)
+msa_nostate <- sapply(unlist(data$Location.Name),strip_states)
 
 #list of states
-states <- sapply(unlist(data$msa),get_states)
+states <- sapply(unlist(data$Location.Name),get_states)
 
 #Combined list with rankings
 #msa_rank <- paste0(msa_nostate, " (", data$overall_rank,")")
 msa_rank<-msa_nostate
-app <- data.frame(data$overall_rank,msa_rank,states)
+app <- data.frame(data$Overall,msa_rank,states)
 
 #Order by state then place, alphabetically
 app_order <- app[order(app$states,app$msa_rank),]
