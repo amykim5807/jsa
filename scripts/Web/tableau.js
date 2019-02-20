@@ -1,9 +1,10 @@
-var params = ["Population", "Education", "Lifestyle"];
+var params_short = ["Population", "Education", "Lifestyle"];
+var params_long = []
 
 //Loading tableau visualization on initial page load
 function initViz() {
     var containerDiv = document.getElementById("vizContainer"),
-        url = "http://public.tableau.com/views/JSA_V1_Reranked/V1_reranked_simple",
+        url = "http://public.tableau.com/views/WebsiteMap_4/overall",
         options = {
             hideTabs: false,
             onFirstInteractive: function () {
@@ -29,12 +30,17 @@ function get_sum_params(){
 }
 
 //Function to change a parameter value (using sliders)
-function change_val(param) {
+function change_val(param,opt=0) {
+  params = params_short
+  //Full parameter options?
+  if (opt){
+    params = params_long
+  }
   var sum = get_sum_params();
-  
+
   //Displaying normalized values
   for (i = 0; i < params.length; i++){
-    var val = (document.getElementById(params[i]).value/sum).toFixed(3)*100;
+    var val = ((document.getElementById(params[i]).value/sum)*100).toFixed(2);
     document.getElementById(params[i].concat("_num")).innerHTML = params[i].concat(": ").concat(val).concat("%");
   }
 
