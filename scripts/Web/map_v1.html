@@ -3,7 +3,7 @@
 
 <head>
     <title>Test Map</title>
-    <link href="stylesheet.css" rel="stylesheet" type="text/css">
+    <link href="newstyle.css" rel="stylesheet" type="text/css">
     <script type="text/javascript"
 	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
     <script src="tableau.js"></script>
@@ -15,14 +15,56 @@
     <div id="vizContainer" style="width:800px; height:500px; float:left;"></div>
     <!-- Sliders -->
     <div class="slidecontainer" style = "width: 200px; float:right;">
-      <div id = "Population_num"> Population: 33%</div>
+      <button id = "Population_num" class = "accordion"> Population: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Population" oninput = "change_val('Population')">
-      <div id = "Education_num"> Education: 33% </div>
+
+      <button id = "Education_num" class = "accordion"> Education: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Education" oninput = "change_val('Education')">
-      <div id = "Lifestyle_num"> Lifestyle: 33% </div>
+      <div class="panel">
+        <div id = "College_num" class = 'label'> College Grads: 25%</div>
+        <input type="range" min="0" max="100" value="25" class="slider_inner" id="College" oninput = "change_val('College',1)">
+        <div id = "Grad_num" class = 'label'> Top 20 Grad: 25%</div>
+        <input type="range" min="0" max="100" value="25" class="slider_inner" id="Grad" oninput = "change_val('Grad',1)">
+        <div id = "Ugrad_num" class = 'label'> Top 20 Ugrad: 25%</div>
+        <input type="range" min="0" max="100" value="25" class="slider_inner" id="Ugrad" oninput = "change_val('Ugrad',1)">
+        <div id = "Patents_num" class = 'label'> Patents: 25%</div>
+        <input type="range" min="0" max="100" value="25" class="slider_inner" id="Patents" oninput = "change_val('Patents',1)">
+      </div>
+
+      <button id = "Lifestyle_num" class = "accordion"> Lifestyle: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Lifestyle" oninput = "change_val('Lifestyle')">
+      <div class="panel">
+        <div id = "Commute_num" class = 'label'> Commute: 33%</div>
+        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Commute" oninput = "change_val('Commute',2)">
+        <div id = "Crime_num" class = 'label'> Crime: 33%</div>
+        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Crime" oninput = "change_val('Crime',2)">
+        <div id = "Housing_num" class = 'label'> Housing: 33%</div>
+        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Housing" oninput = "change_val('Housing',2)">
+      </div>
     </div>
 
+<script>
+
+var acc = document.getElementsByClassName("accordion");
+var k;
+
+for (k = 0; k < acc.length; k++) {
+  acc[k].addEventListener("click", function() {
+    console.log('hi')
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
 
 </html>

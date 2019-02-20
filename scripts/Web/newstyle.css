@@ -1,5 +1,12 @@
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
 .accordion {
-  background-color: #eee;
+  /* background-color: #eee; */
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -10,21 +17,43 @@
   transition: 0.4s;
 }
 
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
 .slidecontainer {
-  width: 20%; /* Width of the outside container */
+  width: 10%; /* Width of the outside container */
+  height: 30px;
 }
 
 /* The slider itself */
 .slider {
+  width: 100%; /* Full-width */
+  height: 20px; /* Specified height */
+}
+
+.slider_inner {
   width: 50%; /* Full-width */
-  height: 25px; /* Specified height */
+  padding:5px;
+  height:15px;
+}
+
+.label {
+  color: #444;
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
 }
 
 /* Mouse-over effects */
 .slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
 }
-
+/*
 .range {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -64,4 +93,4 @@ input[type=range]::-moz-range-thumb {
   cursor: -moz-grab;
   -moz-transition: border 1000ms ease;
   transition: border 1000ms ease;
-}
+} */
