@@ -2,8 +2,8 @@
 //Loading tableau visualization on initial page load
 function initViz() {
     var containerDiv = document.getElementById("vizContainer"),
-        url = "http://public.tableau.com/views/WebsiteMap_4/map_v1",
-        //url = "http://public.tableau.com/views/WebsiteMap_4/overall",
+        //url = "http://public.tableau.com/views/WebsiteMap_4/map_v1",
+        url = "http://public.tableau.com/views/JSA_All_MSAs_0/Dashboard1",
         options = {
             hideTabs: false,
             onFirstInteractive: function () {
