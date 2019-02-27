@@ -15,10 +15,27 @@
     <!-- Map Container -->
     <div id="vizContainer" style="width: 1200px; float:center;"></div>
     <!-- Sliders -->
-    <div class="slidecontainer" style = "width: 200px; float:right;">
+    <div class="slidecontainer" style = "width: 1200px;">
+
+      <div class="containerDiv" style = "float:right; width:200px;">
+      <button id = "Lifestyle_num" class = "accordion" style = "float:right;"> Lifestyle: 33% </button>
+      <input type="range" min="0" max="100" value="33" class="slider" id="Lifestyle" oninput = "change_val('Lifestyle')">
+      <div class="panel">
+        <div id = "Commute_num" class = 'label'> Commute: 33%</div>
+        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Commute" oninput = "change_val('Commute',2)">
+        <div id = "Crime_num" class = 'label'> Crime: 33%</div>
+        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Crime" oninput = "change_val('Crime',2)">
+        <div id = "Housing_num" class = 'label'> Housing: 33%</div>
+        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Housing" oninput = "change_val('Housing',2)">
+      </div>
+      </div>
+
+      <div class="containerDiv" style = "float:left; width:200px;">
       <button id = "Population_num" class = "accordion"> Population: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Population" oninput = "change_val('Population')">
+      </div>
 
+      <div class="containerDiv" style = "display: inline-block;margin:0;width:200px;padding-left:300px; padding-right:100px">
       <button id = "Education_num" class = "accordion"> Education: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Education" oninput = "change_val('Education')">
       <div class="panel">
@@ -31,16 +48,6 @@
         <div id = "Patents_num" class = 'label'> Patents: 25%</div>
         <input type="range" min="0" max="100" value="25" class="slider_inner" id="Patents" oninput = "change_val('Patents',1)">
       </div>
-
-      <button id = "Lifestyle_num" class = "accordion"> Lifestyle: 33% </button>
-      <input type="range" min="0" max="100" value="33" class="slider" id="Lifestyle" oninput = "change_val('Lifestyle')">
-      <div class="panel">
-        <div id = "Commute_num" class = 'label'> Commute: 33%</div>
-        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Commute" oninput = "change_val('Commute',2)">
-        <div id = "Crime_num" class = 'label'> Crime: 33%</div>
-        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Crime" oninput = "change_val('Crime',2)">
-        <div id = "Housing_num" class = 'label'> Housing: 33%</div>
-        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Housing" oninput = "change_val('Housing',2)">
       </div>
     </div>
 
