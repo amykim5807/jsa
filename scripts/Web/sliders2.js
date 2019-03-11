@@ -40,10 +40,4 @@ function change_val(param,opt=0) {
       document.getElementById(params[i].concat("_num")).innerHTML = params[i].concat(": ").concat(main_val).concat("%");
     }
   }
-
-  //Sending to Tableau
-  if (viz){
-    var slider = document.getElementById(param);
-    submit_param(param,slider.value/100)
-  }
 }
