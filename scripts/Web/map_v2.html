@@ -3,12 +3,110 @@
 
 <head>
     <title>Test Map V2</title>
-    <link href="newstyle.css" rel="stylesheet" type="text/css">
+    <!-- <link href="newstyle.css" rel="stylesheet" type="text/css"> -->
     <script type="text/javascript"
 	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
     <script src="tableau.js"></script>
     <script src="sliders2.js"></script>
+    <style>
+    .panel {
+      width:100%;
+      display: none;
+      overflow: hidden;
+      font-family: sans-serif;
+      font-size: 12px;
+    }
 
+    .accordion {
+      /* background-color: #eee; */
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .slidecontainer {
+      width: 10%; /* Width of the outside container */
+      height: 30px;
+    }
+
+    /* The slider itself */
+    .slider {
+      width: 100%; /* Full-width */
+      height: 20px; /* Specified height */
+    }
+
+    .slider_inner {
+      width: 75%; /* Full-width */
+      padding:5px;
+      height:15px;
+    }
+
+    .label {
+      color: #444;
+      cursor: pointer;
+      padding: 5px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+      opacity: 1; /* Fully shown on mouse-over */
+    }
+    /*
+    .range {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 200px;
+      margin-top: 10px;
+      transform: translate(-50%, -50%);
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border: 2px solid;
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      max-width: 80px;
+      position: relative;
+      bottom: 11px;
+      background-color: #1d1c25;
+      cursor: -webkit-grab;
+
+      -webkit-transition: border 1000ms ease;
+      transition: border 1000ms ease;
+    }
+    input[type=range]::-moz-range-thumb {
+      -moz-appearance: none;
+      border: 2px solid;
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      max-width: 80px;
+      position: relative;
+      bottom: 11px;
+      background-color: #1d1c25;
+      cursor: -moz-grab;
+      -moz-transition: border 1000ms ease;
+      transition: border 1000ms ease;
+    } */
+    </style>
 </head>
 
 <body onload="initViz()">
@@ -17,12 +115,12 @@
     <!-- Sliders -->
     <div class="slidecontainer" style = "width: 1200px;">
 
-      <div class="containerDiv" style = "float:left; width:200px;">
+      <div class="containerDiv" style = "float:left; width:300px;">
       <button id = "Population_num" class = "accordion"> Population 25-64: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Population" oninput = "change_val('Population')">
       </div>
 
-      <div class="containerDiv" style = "display: inline-block;margin:0;width:200px;padding-left:100px; padding-right:100px">
+      <div class="containerDiv" style = "display: inline-block;margin:0;width:300px;vertical-align: top;padding-left:50px; padding-right:50px">
       <button id = "Education_num" class = "accordion"> Education: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Education" oninput = "change_val('Education')">
       <div class="panel">
@@ -37,7 +135,7 @@
       </div>
       </div>
 
-      <div class="containerDiv" style = "display: inline-block;margin:0;width:200px; padding-right:100px">
+      <div class="containerDiv" style = "display: inline-block; margin:0; vertical-align: top;width:300px">
       <button id = "Lifestyle_num" class = "accordion" style = "float:right;"> Lifestyle: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Lifestyle" oninput = "change_val('Lifestyle')">
       <div class="panel">
@@ -49,9 +147,10 @@
         <input type="range" min="0" max="100" value="33" class="slider_inner" id="Housing" oninput = "change_val('Housing',2)">
       </div>
       </div>
-      <div class="slidecontainer" style = "display: inline-block;margin:0;width:200px;">
+      <div class="slidecontainer" style = "display: inline-block;vertical-align:middle ;margin:0;padding-left:50px;">
       <button onclick = "submit_params()"> Submit Parameters </button>
       </div>
+
     </div>
 <script>
 
