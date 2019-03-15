@@ -6,8 +6,86 @@
     <!-- <link href="newstyle.css" rel="stylesheet" type="text/css"> -->
     <script type="text/javascript"
 	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
-    <script src="tableau.js"></script>
-    <script src="sliders2.js"></script>
+    <!-- <script src="tableau.js"></script> -->
+    <script>
+
+    //Loading tableau visualization on initial page load
+    function initViz() {
+        var containerDiv = document.getElementById("vizContainer"),
+            //url = "http://public.tableau.com/views/WebsiteMap_4/map_v1",
+            url = "http://public.tableau.com/views/WebsiteMap_4/overall",
+            options = {
+                hideTabs: false,
+                onFirstInteractive: function () {
+                    console.log("Viz has been loaded!");
+                }
+            };
+        window.viz = new tableau.Viz(containerDiv, url, options);
+    }
+
+    //Function to submit parameter to Tableau server
+    function submit_params(){
+      var params = ["Population", "Education", "Lifestyle","College",
+        "Grad","Ugrad","Patents","Commute","Crime","Housing"];
+      for (param=0;param<params.length;param++){
+        var val = document.getElementById(params[param]).value
+        console.log(params[param], val)
+        viz.getWorkbook().changeParameterValueAsync(params[param], val/100).then(function (){ console.log('Parameter set');})
+      }
+    }
+    </script>
+    <!-- <script src="sliders2.js"></script> -->
+    <script>
+    var params0 = ["Population", "Education", "Lifestyle"];
+    var params_ed = ["College","Grad","Ugrad","Patents"];
+    var paramlabels_ed = ["% Adults with College Degree","Top Science Grad Programs","Top Science Undergraduates","Patents per 1000 workers"];
+    var params_li = ["Commute","Crime","Housing"];
+    var paramlabels_li = ["% Workers with <30 min commute","Violent Crimes per 10000","Average Houseprice"]
+
+
+    //Helper function to find the sum of all parameter values
+    function get_sum_params(param,params){
+      var sum = 0;
+      for (j = 0; j < params.length; j++){
+        if (params[j] != param){
+          sum += parseFloat(document.getElementById(params[j]).value);
+          console.log(sum);
+        }
+      }
+      return sum;
+    }
+
+    //Function to change a parameter value (using sliders)
+    function change_val(param,opt=0) {
+      var params;
+      if (opt==1) {
+        params = params_ed
+        paramlabels = paramlabels_ed
+      }else if (opt==2) {
+        params = params_li
+        paramlabels = paramlabels_li
+      }else {
+        params = params0
+        paramlabels = params0
+      }
+      var sum = get_sum_params(param,params);
+      var main_val = document.getElementById(param).value;
+
+      //Displaying normalized values
+      for (i = 0; i < params.length; i++){
+        //Regular parameter
+        if (params[i] != param){
+          var val = ((document.getElementById(params[i]).value/sum)*(100-main_val)).toFixed(0);
+          document.getElementById(params[i]).value = val;
+          document.getElementById(params[i].concat("_num")).innerHTML = paramlabels[i].concat(": ").concat(val).concat("%");
+        }
+        //Specific parameter we're looking for
+        else{
+          document.getElementById(params[i].concat("_num")).innerHTML = paramlabels[i].concat(": ").concat(main_val).concat("%");
+        }
+      }
+    }
+    </script>
     <style>
     .panel {
       width:100%;
