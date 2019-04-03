@@ -4,8 +4,10 @@
 <head>
     <title>Test Map V2</title>
     <!-- <link href="newstyle.css" rel="stylesheet" type="text/css"> -->
+
     <script type="text/javascript"
-	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+	    src="https://public.tableau.com/javascripts/api/tableau-2.min.js">
+    </script>
     <!-- <script src="tableau.js"></script> -->
     <script>
 
@@ -33,15 +35,63 @@
         viz.getWorkbook().changeParameterValueAsync(params[param], val/100).then(function (){ console.log('Parameter set');})
       }
     }
+
+    //Helper function to send selected msa to tableau
+    function sendMSA(msa){
+      console.log(msa)
+    }
+
     </script>
     <!-- <script src="sliders2.js"></script> -->
     <script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+  </script>
+
+  <script>
+
     var params0 = ["Population", "Education", "Lifestyle"];
     var params_ed = ["College","Grad","Ugrad","Patents"];
     var paramlabels_ed = ["% Adults with College Degree","Top Science Grad Programs","Top Science Undergraduates","Patents per 1000 workers"];
     var params_li = ["Commute","Crime","Housing"];
     var paramlabels_li = ["% Workers with <30 min commute","Violent Crimes per 10000","Average Houseprice"]
 
+    //Helper function to reset parameter values to original values
+    function reset_params(){
+      for (i=0;i<params0.length;i++){
+        var val=33
+        document.getElementById(params0[i]).value = val;
+        document.getElementById(params0[i].concat("_num")).innerHTML = params0[i].concat(": ").concat(val).concat("%");
+      }
+      for (j=0;j<params_ed.length;j++){
+        var val=25
+        document.getElementById(params_ed[j]).value = val;
+        document.getElementById(params_ed[j].concat("_num")).innerHTML = paramlabels_ed[j].concat(": ").concat(val).concat("%");
+      }
+      for (k=0;k<params_li.length;k++){
+        var val=33
+        document.getElementById(params_li[k]).value = val;
+        document.getElementById(params_li[k].concat("_num")).innerHTML = paramlabels_li[k].concat(": ").concat(val).concat("%");
+      }
+      submit_params()
+    }
 
     //Helper function to find the sum of all parameter values
     function get_sum_params(param,params){
@@ -184,6 +234,35 @@
       -moz-transition: border 1000ms ease;
       transition: border 1000ms ease;
     } */
+    #myInput {
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Grey background color */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 18px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
     </style>
 </head>
 
@@ -193,29 +272,9 @@
     <!-- Sliders -->
     <div class="slidecontainer" style = "width: 1200px;">
 
-<<<<<<< HEAD
       <div class="containerDiv" style = "float:left; width:300px;">
       <button id = "Population_num" class = "accordion"> Population 25-64: 33% </button>
-=======
-      <div class="containerDiv" style = "float:right; width:200px;">
-      <button id = "Lifestyle_num" class = "accordion" style = "float:right;"> Lifestyle: 33% </button>
-      <input type="range" min="0" max="100" value="33" class="slider" id="Lifestyle" oninput = "change_val('Lifestyle')">
-      <div class="panel">
-        <div id = "Commute_num" class = 'label'> Commute: 33%</div>
-        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Commute" oninput = "change_val('Commute',2)">
-        <div id = "Crime_num" class = 'label'> Crime: 33%</div>
-        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Crime" oninput = "change_val('Crime',2)">
-        <div id = "Housing_num" class = 'label'> Housing: 33%</div>
-        <input type="range" min="0" max="100" value="33" class="slider_inner" id="Housing" oninput = "change_val('Housing',2)">
-      </div>
-      </div>
 
-      <div class="containerDiv" style = "float:left; width:200px;">
-      <button id = "Population_num" class = "accordion"> Population: 33% </button>
-<<<<<<< HEAD
->>>>>>> parent of f91b891... edited names to pair/triangle msas in reranked and reranked_new, changed website slider labels to match tableau tooltip
-=======
->>>>>>> parent of f91b891... edited names to pair/triangle msas in reranked and reranked_new, changed website slider labels to match tableau tooltip
       <input type="range" min="0" max="100" value="33" class="slider" id="Population" oninput = "change_val('Population')">
       </div>
 
@@ -223,13 +282,13 @@
       <button id = "Education_num" class = "accordion"> Education: 33% </button>
       <input type="range" min="0" max="100" value="33" class="slider" id="Education" oninput = "change_val('Education')">
       <div class="panel">
-        <div id = "College_num" class = 'label'> College Grads: 25%</div>
+        <div id = "College_num" class = 'label'> % Adults with College Degree: 25%</div>
         <input type="range" min="0" max="100" value="25" class="slider_inner" id="College" oninput = "change_val('College',1)">
-        <div id = "Grad_num" class = 'label'> Top 20 Grad: 25%</div>
+        <div id = "Grad_num" class = 'label'> Top Science Grad Programs: 25%</div>
         <input type="range" min="0" max="100" value="25" class="slider_inner" id="Grad" oninput = "change_val('Grad',1)">
-        <div id = "Ugrad_num" class = 'label'> Top 20 Ugrad: 25%</div>
+        <div id = "Ugrad_num" class = 'label'> Top Science Undergraduates: 25%</div>
         <input type="range" min="0" max="100" value="25" class="slider_inner" id="Ugrad" oninput = "change_val('Ugrad',1)">
-        <div id = "Patents_num" class = 'label'> Patents: 25%</div>
+        <div id = "Patents_num" class = 'label'> Patents per 1000 workers: 25%</div>
         <input type="range" min="0" max="100" value="25" class="slider_inner" id="Patents" oninput = "change_val('Patents',1)">
       </div>
       </div>
@@ -248,9 +307,14 @@
       </div>
       <div class="slidecontainer" style = "display: inline-block;vertical-align:middle ;margin:0;padding-left:50px;">
       <button onclick = "submit_params()"> Submit Parameters </button>
+      <button onclick = "reset_params()"> Reset Parameters </button>
       </div>
 
     </div>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for MSAs..">
+
+  <ul id="myUL">
+  </ul>
 <script>
 
 var acc = document.getElementsByClassName("accordion");
@@ -271,6 +335,17 @@ for (k = 0; k < acc.length; k++) {
       panel.style.display = "block";
     }
   });
+}
+var msas = ["Abilene, TX","Akron, OH","Albany, GA","Albany, OR","Albany-Schenectady-Troy, NY","Albuquerque, NM","Alexandria, LA","Allentown-Bethlehem-Easton, PA-NJ","Altoona, PA","Amarillo, TX","Ames, IA","Ann Arbor, MI","Anniston-Oxford-Jacksonville, AL","Appleton, WI","Asheville, NC","Athens-Clarke County, GA","Atlanta-Sandy Springs-Roswell, GA","Atlantic City-Hammonton, NJ","Auburn-Opelika, AL","Augusta-Richmond County, GA-SC","Austin-Round Rock, TX","Bakersfield, CA","Baltimore-Columbia-Towson, MD","Bangor, ME","Barnstable Town, MA","Baton Rouge, LA","Battle Creek, MI","Bay City, MI","Beaumont-Port Arthur, TX","Beckley, WV","Bellingham, WA","Bend-Redmond, OR","Billings, MT","Binghamton, NY","Birmingham-Hoover, AL","Bismarck, ND","Blacksburg-Christiansburg-Radford, VA","Bloomington, IL","Bloomington, IN","Bloomsburg-Berwick, PA","Boise City, ID","Boston-Cambridge-Newton, MA-NH","Boulder, CO","Bowling Green, KY","Bremerton-Silverdale, WA","Bridgeport-Stamford-Norwalk, CT","Brownsville-Harlingen, TX","Brunswick, GA","Buffalo-Cheektowaga-Niagara Falls, NY","Burlington, NC","Burlington-South Burlington, VT","California-Lexington Park, MD","Canton-Massillon, OH","Cape Coral-Fort Myers, FL","Cape Girardeau, MO-IL","Carbondale-Marion, IL","Carson City, NV","Casper, WY","Cedar Rapids, IA","Chambersburg-Waynesboro, PA","Champaign-Urbana, IL","Charleston, WV","Charleston-North Charleston, SC","Charlotte-Concord-Gastonia, NC-SC","Charlottesville, VA","Chattanooga, TN-GA","Cheyenne, WY","Chicago-Naperville-Elgin, IL-IN-WI","Chico, CA","Cincinnati, OH-KY-IN","Clarksville, TN-KY","Cleveland, TN","Cleveland-Elyria, OH","Coeur d'Alene, ID","College Station-Bryan, TX","Colorado Springs, CO","Columbia, MO","Columbia, SC","Columbus, GA-AL","Columbus, IN","Columbus, OH","Corpus Christi, TX","Corvallis, OR","Crestview-Fort Walton Beach-Destin, FL","Cumberland, MD-WV","Dallas-Fort Worth-Arlington, TX","Dalton, GA","Danville, IL","Daphne-Fairhope-Foley, AL","Davenport-Moline-Rock Island, IA-IL","Dayton, OH","Decatur, AL","Decatur, IL","Deltona-Daytona Beach-Ormond Beach, FL","Denver-Aurora-Lakewood, CO","Des Moines-West Des Moines, IA","Detroit-Warren-Dearborn, MI","Dothan, AL","Dover, DE","Dubuque, IA","Duluth, MN-WI","Durham-Chapel Hill, NC","East Stroudsburg, PA","Eau Claire, WI","El Centro, CA","Elizabethtown-Fort Knox, KY","Elkhart-Goshen, IN","Elmira, NY","El Paso, TX","Enid, OK","Erie, PA","Eugene, OR","Evansville, IN-KY","Fargo, ND-MN","Farmington, NM","Fayetteville, NC","Fayetteville-Springdale-Rogers, AR-MO","Flagstaff, AZ","Flint, MI","Florence, SC","Florence-Muscle Shoals, AL","Fond du Lac, WI","Fort Collins, CO","Fort Smith, AR-OK","Fort Wayne, IN","Fresno, CA","Gadsden, AL","Gainesville, FL","Gainesville, GA","Gettysburg, PA","Glens Falls, NY","Goldsboro, NC","Grand Forks, ND-MN","Grand Island, NE","Grand Junction, CO","Grand Rapids-Wyoming, MI","Grants Pass, OR","Great Falls, MT","Greeley, CO","Green Bay, WI","Greensboro-High Point, NC","Greenville, NC","Greenville-Anderson-Mauldin, SC","Gulfport-Biloxi-Pascagoula, MS","Hagerstown-Martinsburg, MD-WV","Hammond, LA","Hanford-Corcoran, CA","Harrisburg-Carlisle, PA","Harrisonburg, VA","Hartford-West Hartford-East Hartford, CT","Hattiesburg, MS","Hickory-Lenoir-Morganton, NC","Hilton Head Island-Bluffton-Beaufort, SC","Hinesville, GA","Homosassa Springs, FL","Hot Springs, AR","Houma-Thibodaux, LA","Houston-The Woodlands-Sugar Land, TX","Huntington-Ashland, WV-KY-OH","Huntsville, AL","Idaho Falls, ID","Indianapolis-Carmel-Anderson, IN","Iowa City, IA","Ithaca, NY","Jackson, MI","Jackson, MS","Jackson, TN","Jacksonville, FL","Jacksonville, NC","Janesville-Beloit, WI","Jefferson City, MO","Johnson City, TN","Johnstown, PA","Jonesboro, AR","Joplin, MO","Kalamazoo-Portage, MI","Kankakee, IL","Kansas City, MO-KS","Kennewick-Richland, WA","Killeen-Temple, TX","Kingsport-Bristol-Bristol, TN-VA","Kingston, NY","Knoxville, TN","Kokomo, IN","La Crosse-Onalaska, WI-MN","Lafayette, LA","Lafayette-West Lafayette, IN","Lake Charles, LA","Lake Havasu City-Kingman, AZ","Lakeland-Winter Haven, FL","Lancaster, PA","Lansing-East Lansing, MI","Laredo, TX","Las Cruces, NM","Las Vegas-Henderson-Paradise, NV","Lawrence, KS","Lawton, OK","Lebanon, PA","Lewiston, ID-WA","Lewiston-Auburn, ME","Lexington-Fayette, KY","Lima, OH","Lincoln, NE","Little Rock-North Little Rock-Conway, AR","Logan, UT-ID","Longview, TX","Longview, WA","Los Angeles-Long Beach-Anaheim, CA","Louisville/Jefferson County, KY-IN","Lubbock, TX","Lynchburg, VA","Macon-Bibb County, GA","Madera, CA","Madison, WI","Manchester-Nashua, NH","Manhattan, KS","Mankato-North Mankato, MN","Mansfield, OH","McAllen-Edinburg-Mission, TX","Medford, OR","Memphis, TN-MS-AR","Merced, CA","Miami-Fort Lauderdale-West Palm Beach, FL","Michigan City-La Porte, IN","Midland, MI","Midland, TX","Milwaukee-Waukesha-West Allis, WI","Minneapolis-St. Paul-Bloomington, MN-WI","Missoula, MT","Mobile, AL","Modesto, CA","Monroe, LA","Monroe, MI","Montgomery, AL","Morgantown, WV","Morristown, TN","Mount Vernon-Anacortes, WA","Muncie, IN","Muskegon, MI","Myrtle Beach-Conway-North Myrtle Beach, SC-NC","Napa, CA","Naples-Immokalee-Marco Island, FL","Nashville-Davidson--Murfreesboro--Franklin, TN","New Bern, NC","New Haven-Milford, CT","New Orleans-Metairie, LA","New York-Newark-Jersey City, NY-NJ-PA","Niles-Benton Harbor, MI","North Port-Sarasota-Bradenton, FL","Norwich-New London, CT","Ocala, FL","Ocean City, NJ","Odessa, TX","Ogden-Clearfield, UT","Oklahoma City, OK","Olympia-Tumwater, WA","Omaha-Council Bluffs, NE-IA","Orlando-Kissimmee-Sanford, FL","Oshkosh-Neenah, WI","Owensboro, KY","Oxnard-Thousand Oaks-Ventura, CA","Palm Bay-Melbourne-Titusville, FL","Panama City, FL","Parkersburg-Vienna, WV","Pensacola-Ferry Pass-Brent, FL","Peoria, IL","Philadelphia-Camden-Wilmington, PA-NJ-DE-MD","Phoenix-Mesa-Scottsdale, AZ","Pine Bluff, AR","Pittsburgh, PA","Pittsfield, MA","Pocatello, ID","Portland-South Portland, ME","Portland-Vancouver-Hillsboro, OR-WA","Port St. Lucie, FL","Prescott, AZ","Providence-Warwick, RI-MA","Provo-Orem, UT","Pueblo, CO","Punta Gorda, FL","Racine, WI","Raleigh, NC","Rapid City, SD","Reading, PA","Redding, CA","Reno, NV","Richmond, VA","Riverside-San Bernardino-Ontario, CA","Roanoke, VA","Rochester, MN","Rochester, NY","Rockford, IL","Rocky Mount, NC","Rome, GA","Sacramento--Roseville--Arden-Arcade, CA","Saginaw, MI","St. Cloud, MN","St. George, UT","St. Joseph, MO-KS","St. Louis, MO-IL","Salem, OR","Salinas, CA","Salisbury, MD-DE","Salt Lake City, UT","San Angelo, TX","San Antonio-New Braunfels, TX","San Diego-Carlsbad, CA","San Francisco-Oakland-Hayward, CA","San Jose-Sunnyvale-Santa Clara, CA","San Luis Obispo-Paso Robles-Arroyo Grande, CA","Santa Cruz-Watsonville, CA","Santa Fe, NM","Santa Maria-Santa Barbara, CA","Santa Rosa, CA","Savannah, GA","Scranton--Wilkes-Barre--Hazleton, PA","Seattle-Tacoma-Bellevue, WA","Sebastian-Vero Beach, FL","Sebring, FL","Sheboygan, WI","Sherman-Denison, TX","Shreveport-Bossier City, LA","Sierra Vista-Douglas, AZ","Sioux City, IA-NE-SD","Sioux Falls, SD","South Bend-Mishawaka, IN-MI","Spartanburg, SC","Spokane-Spokane Valley, WA","Springfield, IL","Springfield, MA","Springfield, MO","Springfield, OH","State College, PA","Staunton-Waynesboro, VA","Stockton-Lodi, CA","Sumter, SC","Syracuse, NY","Tallahassee, FL","Tampa-St. Petersburg-Clearwater, FL","Terre Haute, IN","Texarkana, TX-AR","The Villages, FL","Toledo, OH","Topeka, KS","Trenton, NJ","Tucson, AZ","Tulsa, OK","Tuscaloosa, AL","Tyler, TX","Utica-Rome, NY","Valdosta, GA","Vallejo-Fairfield, CA","Victoria, TX","Vineland-Bridgeton, NJ","Virginia Beach-Norfolk-Newport News, VA-NC","Visalia-Porterville, CA","Waco, TX","Walla Walla, WA","Warner Robins, GA","Washington-Arlington-Alexandria, DC-VA-MD-WV","Waterloo-Cedar Falls, IA","Watertown-Fort Drum, NY","Wausau, WI","Weirton-Steubenville, WV-OH","Wenatchee, WA","Wheeling, WV-OH","Wichita, KS","Wichita Falls, TX","Williamsport, PA","Wilmington, NC","Winchester, VA-WV","Winston-Salem, NC","Worcester, MA-CT","Yakima, WA","York-Hanover, PA","Youngstown-Warren-Boardman, OH-PA","Yuba City, CA","Yuma, AZ"]
+var searchresults = document.getElementById("myUL")
+for (i=0;i<msas.length;i++){
+  var newcity = document.createElement("li");
+  var msa = document.createElement("a");
+  msa.href = "#"
+  msa.onclick = "sendMSA('hi')"//.concat(msas[i]).concat(")")
+  msa.text = msas[i]
+  newcity.appendChild(msa)
+  searchresults.appendChild(newcity)
 }
 
 </script>
