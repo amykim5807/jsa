@@ -15,7 +15,7 @@
     function initViz() {
         var containerDiv = document.getElementById("vizContainer"),
             //url = "http://public.tableau.com/views/WebsiteMap_4/map_v1",
-            url = "http://public.tableau.com/views/WebsiteMap_4/overall",
+            url = "http://public.tableau.com/views/JSA_All_MSAs_onlinev2/Dashboard1",
             options = {
                 hideTabs: false,
                 onFirstInteractive: function () {
@@ -35,10 +35,10 @@
         viz.getWorkbook().changeParameterValueAsync(params[param], val/100).then(function (){ console.log('Parameter set');})
       }
     }
-
-    //Helper function to send selected msa to tableau
-    function sendMSA(msa){
-      console.log(msa)
+    //Function to submit custom MSA param to Tableau server
+    function submit_msa(msa,msa_num){
+      param = "Select City ".concat(msa_num)
+      viz.getWorkbook().changeParameterValueAsync(param, msa).then(function (){ console.log(msa.concat(' submitted!'));})
     }
 
     </script>
@@ -54,8 +54,7 @@
 
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
-      a = li[i].getElementsByTagName("a")[0];
-      txtValue = a.textContent || a.innerText;
+      txtValue = li[i].textContent
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         li[i].style.display = "";
       } else {
@@ -72,6 +71,13 @@
     var paramlabels_ed = ["% Adults with College Degree","Top Science Grad Programs","Top Science Undergraduates","Patents per 1000 workers"];
     var params_li = ["Commute","Crime","Housing"];
     var paramlabels_li = ["% Workers with <30 min commute","Violent Crimes per 10000","Average Houseprice"]
+
+    //Function to help send data to tableau (select city)
+    function custom_msa(msa_num){
+      var id_msa = "myInput".concat(msa_num)
+      var msa_text = document.getElementById(id_msa).value
+      submit_msa(msa_text,msa_num)
+    }
 
     //Helper function to reset parameter values to original values
     function reset_params(){
@@ -193,80 +199,77 @@
     .slider:hover {
       opacity: 1; /* Fully shown on mouse-over */
     }
-    /*
-    .range {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 200px;
-      margin-top: 10px;
-      transform: translate(-50%, -50%);
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      border: 2px solid;
-      border-radius: 50%;
-      height: 25px;
-      width: 25px;
-      max-width: 80px;
-      position: relative;
-      bottom: 11px;
-      background-color: #1d1c25;
-      cursor: -webkit-grab;
-
-      -webkit-transition: border 1000ms ease;
-      transition: border 1000ms ease;
-    }
-    input[type=range]::-moz-range-thumb {
-      -moz-appearance: none;
-      border: 2px solid;
-      border-radius: 50%;
-      height: 25px;
-      width: 25px;
-      max-width: 80px;
-      position: relative;
-      bottom: 11px;
-      background-color: #1d1c25;
-      cursor: -moz-grab;
-      -moz-transition: border 1000ms ease;
-      transition: border 1000ms ease;
-    } */
-    #myInput {
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
+    * { box-sizing: border-box; }
+body {
+  font: 16px Arial;
 }
-
-#myUL {
-  /* Remove default list styling */
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
 }
-
-#myUL li a {
-  border: 1px solid #ddd; /* Add a border to all links */
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6; /* Grey background color */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove default text underline */
-  font-size: 18px; /* Increase the font-size */
-  color: black; /* Add a black text color */
-  display: block; /* Make it into a block element to fill the whole list */
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
 }
-
-#myUL li a:hover:not(.header) {
-  background-color: #eee; /* Add a hover effect to all links, except for headers */
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: #ccc;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: #ccc !important;
+  color: #ffffff;
 }
     </style>
 </head>
 
 <body onload="initViz()">
+
+      <form autocomplete="off" action="custom_msa(1)" style = "display: inline-block; margin:0; vertical-align: top;width:300px">
+      <div class="autocomplete" style="width:300px;">
+        <input id="myInput1" type="text" name="msa" placeholder="Select City 1">
+      </div>
+    </form>
+
+    <form autocomplete="off" action="custom_msa(2)" style = "display: inline-block; margin:0; vertical-align: top;width:300px">
+    <div class="autocomplete" style="width:300px;">
+      <input id="myInput2" type="text" name="msa" placeholder="Select City 2">
+    </div>
+  </form>
+
+  <form autocomplete="off" action="custom_msa(3)" style = "display: inline-block; margin:0; vertical-align: top;width:300px">
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput3" type="text" name="msa" placeholder="Select City 3">
+  </div>
+  </form>
     <!-- Map Container -->
     <div id="vizContainer" style="width: 1200px; float:center;"></div>
     <!-- Sliders -->
@@ -310,11 +313,6 @@
       <button onclick = "reset_params()"> Reset Parameters </button>
       </div>
 
-    </div>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for MSAs..">
-
-  <ul id="myUL">
-  </ul>
 <script>
 
 var acc = document.getElementsByClassName("accordion");
@@ -336,18 +334,126 @@ for (k = 0; k < acc.length; k++) {
     }
   });
 }
+
 var msas = ["Abilene, TX","Akron, OH","Albany, GA","Albany, OR","Albany-Schenectady-Troy, NY","Albuquerque, NM","Alexandria, LA","Allentown-Bethlehem-Easton, PA-NJ","Altoona, PA","Amarillo, TX","Ames, IA","Ann Arbor, MI","Anniston-Oxford-Jacksonville, AL","Appleton, WI","Asheville, NC","Athens-Clarke County, GA","Atlanta-Sandy Springs-Roswell, GA","Atlantic City-Hammonton, NJ","Auburn-Opelika, AL","Augusta-Richmond County, GA-SC","Austin-Round Rock, TX","Bakersfield, CA","Baltimore-Columbia-Towson, MD","Bangor, ME","Barnstable Town, MA","Baton Rouge, LA","Battle Creek, MI","Bay City, MI","Beaumont-Port Arthur, TX","Beckley, WV","Bellingham, WA","Bend-Redmond, OR","Billings, MT","Binghamton, NY","Birmingham-Hoover, AL","Bismarck, ND","Blacksburg-Christiansburg-Radford, VA","Bloomington, IL","Bloomington, IN","Bloomsburg-Berwick, PA","Boise City, ID","Boston-Cambridge-Newton, MA-NH","Boulder, CO","Bowling Green, KY","Bremerton-Silverdale, WA","Bridgeport-Stamford-Norwalk, CT","Brownsville-Harlingen, TX","Brunswick, GA","Buffalo-Cheektowaga-Niagara Falls, NY","Burlington, NC","Burlington-South Burlington, VT","California-Lexington Park, MD","Canton-Massillon, OH","Cape Coral-Fort Myers, FL","Cape Girardeau, MO-IL","Carbondale-Marion, IL","Carson City, NV","Casper, WY","Cedar Rapids, IA","Chambersburg-Waynesboro, PA","Champaign-Urbana, IL","Charleston, WV","Charleston-North Charleston, SC","Charlotte-Concord-Gastonia, NC-SC","Charlottesville, VA","Chattanooga, TN-GA","Cheyenne, WY","Chicago-Naperville-Elgin, IL-IN-WI","Chico, CA","Cincinnati, OH-KY-IN","Clarksville, TN-KY","Cleveland, TN","Cleveland-Elyria, OH","Coeur d'Alene, ID","College Station-Bryan, TX","Colorado Springs, CO","Columbia, MO","Columbia, SC","Columbus, GA-AL","Columbus, IN","Columbus, OH","Corpus Christi, TX","Corvallis, OR","Crestview-Fort Walton Beach-Destin, FL","Cumberland, MD-WV","Dallas-Fort Worth-Arlington, TX","Dalton, GA","Danville, IL","Daphne-Fairhope-Foley, AL","Davenport-Moline-Rock Island, IA-IL","Dayton, OH","Decatur, AL","Decatur, IL","Deltona-Daytona Beach-Ormond Beach, FL","Denver-Aurora-Lakewood, CO","Des Moines-West Des Moines, IA","Detroit-Warren-Dearborn, MI","Dothan, AL","Dover, DE","Dubuque, IA","Duluth, MN-WI","Durham-Chapel Hill, NC","East Stroudsburg, PA","Eau Claire, WI","El Centro, CA","Elizabethtown-Fort Knox, KY","Elkhart-Goshen, IN","Elmira, NY","El Paso, TX","Enid, OK","Erie, PA","Eugene, OR","Evansville, IN-KY","Fargo, ND-MN","Farmington, NM","Fayetteville, NC","Fayetteville-Springdale-Rogers, AR-MO","Flagstaff, AZ","Flint, MI","Florence, SC","Florence-Muscle Shoals, AL","Fond du Lac, WI","Fort Collins, CO","Fort Smith, AR-OK","Fort Wayne, IN","Fresno, CA","Gadsden, AL","Gainesville, FL","Gainesville, GA","Gettysburg, PA","Glens Falls, NY","Goldsboro, NC","Grand Forks, ND-MN","Grand Island, NE","Grand Junction, CO","Grand Rapids-Wyoming, MI","Grants Pass, OR","Great Falls, MT","Greeley, CO","Green Bay, WI","Greensboro-High Point, NC","Greenville, NC","Greenville-Anderson-Mauldin, SC","Gulfport-Biloxi-Pascagoula, MS","Hagerstown-Martinsburg, MD-WV","Hammond, LA","Hanford-Corcoran, CA","Harrisburg-Carlisle, PA","Harrisonburg, VA","Hartford-West Hartford-East Hartford, CT","Hattiesburg, MS","Hickory-Lenoir-Morganton, NC","Hilton Head Island-Bluffton-Beaufort, SC","Hinesville, GA","Homosassa Springs, FL","Hot Springs, AR","Houma-Thibodaux, LA","Houston-The Woodlands-Sugar Land, TX","Huntington-Ashland, WV-KY-OH","Huntsville, AL","Idaho Falls, ID","Indianapolis-Carmel-Anderson, IN","Iowa City, IA","Ithaca, NY","Jackson, MI","Jackson, MS","Jackson, TN","Jacksonville, FL","Jacksonville, NC","Janesville-Beloit, WI","Jefferson City, MO","Johnson City, TN","Johnstown, PA","Jonesboro, AR","Joplin, MO","Kalamazoo-Portage, MI","Kankakee, IL","Kansas City, MO-KS","Kennewick-Richland, WA","Killeen-Temple, TX","Kingsport-Bristol-Bristol, TN-VA","Kingston, NY","Knoxville, TN","Kokomo, IN","La Crosse-Onalaska, WI-MN","Lafayette, LA","Lafayette-West Lafayette, IN","Lake Charles, LA","Lake Havasu City-Kingman, AZ","Lakeland-Winter Haven, FL","Lancaster, PA","Lansing-East Lansing, MI","Laredo, TX","Las Cruces, NM","Las Vegas-Henderson-Paradise, NV","Lawrence, KS","Lawton, OK","Lebanon, PA","Lewiston, ID-WA","Lewiston-Auburn, ME","Lexington-Fayette, KY","Lima, OH","Lincoln, NE","Little Rock-North Little Rock-Conway, AR","Logan, UT-ID","Longview, TX","Longview, WA","Los Angeles-Long Beach-Anaheim, CA","Louisville/Jefferson County, KY-IN","Lubbock, TX","Lynchburg, VA","Macon-Bibb County, GA","Madera, CA","Madison, WI","Manchester-Nashua, NH","Manhattan, KS","Mankato-North Mankato, MN","Mansfield, OH","McAllen-Edinburg-Mission, TX","Medford, OR","Memphis, TN-MS-AR","Merced, CA","Miami-Fort Lauderdale-West Palm Beach, FL","Michigan City-La Porte, IN","Midland, MI","Midland, TX","Milwaukee-Waukesha-West Allis, WI","Minneapolis-St. Paul-Bloomington, MN-WI","Missoula, MT","Mobile, AL","Modesto, CA","Monroe, LA","Monroe, MI","Montgomery, AL","Morgantown, WV","Morristown, TN","Mount Vernon-Anacortes, WA","Muncie, IN","Muskegon, MI","Myrtle Beach-Conway-North Myrtle Beach, SC-NC","Napa, CA","Naples-Immokalee-Marco Island, FL","Nashville-Davidson--Murfreesboro--Franklin, TN","New Bern, NC","New Haven-Milford, CT","New Orleans-Metairie, LA","New York-Newark-Jersey City, NY-NJ-PA","Niles-Benton Harbor, MI","North Port-Sarasota-Bradenton, FL","Norwich-New London, CT","Ocala, FL","Ocean City, NJ","Odessa, TX","Ogden-Clearfield, UT","Oklahoma City, OK","Olympia-Tumwater, WA","Omaha-Council Bluffs, NE-IA","Orlando-Kissimmee-Sanford, FL","Oshkosh-Neenah, WI","Owensboro, KY","Oxnard-Thousand Oaks-Ventura, CA","Palm Bay-Melbourne-Titusville, FL","Panama City, FL","Parkersburg-Vienna, WV","Pensacola-Ferry Pass-Brent, FL","Peoria, IL","Philadelphia-Camden-Wilmington, PA-NJ-DE-MD","Phoenix-Mesa-Scottsdale, AZ","Pine Bluff, AR","Pittsburgh, PA","Pittsfield, MA","Pocatello, ID","Portland-South Portland, ME","Portland-Vancouver-Hillsboro, OR-WA","Port St. Lucie, FL","Prescott, AZ","Providence-Warwick, RI-MA","Provo-Orem, UT","Pueblo, CO","Punta Gorda, FL","Racine, WI","Raleigh, NC","Rapid City, SD","Reading, PA","Redding, CA","Reno, NV","Richmond, VA","Riverside-San Bernardino-Ontario, CA","Roanoke, VA","Rochester, MN","Rochester, NY","Rockford, IL","Rocky Mount, NC","Rome, GA","Sacramento--Roseville--Arden-Arcade, CA","Saginaw, MI","St. Cloud, MN","St. George, UT","St. Joseph, MO-KS","St. Louis, MO-IL","Salem, OR","Salinas, CA","Salisbury, MD-DE","Salt Lake City, UT","San Angelo, TX","San Antonio-New Braunfels, TX","San Diego-Carlsbad, CA","San Francisco-Oakland-Hayward, CA","San Jose-Sunnyvale-Santa Clara, CA","San Luis Obispo-Paso Robles-Arroyo Grande, CA","Santa Cruz-Watsonville, CA","Santa Fe, NM","Santa Maria-Santa Barbara, CA","Santa Rosa, CA","Savannah, GA","Scranton--Wilkes-Barre--Hazleton, PA","Seattle-Tacoma-Bellevue, WA","Sebastian-Vero Beach, FL","Sebring, FL","Sheboygan, WI","Sherman-Denison, TX","Shreveport-Bossier City, LA","Sierra Vista-Douglas, AZ","Sioux City, IA-NE-SD","Sioux Falls, SD","South Bend-Mishawaka, IN-MI","Spartanburg, SC","Spokane-Spokane Valley, WA","Springfield, IL","Springfield, MA","Springfield, MO","Springfield, OH","State College, PA","Staunton-Waynesboro, VA","Stockton-Lodi, CA","Sumter, SC","Syracuse, NY","Tallahassee, FL","Tampa-St. Petersburg-Clearwater, FL","Terre Haute, IN","Texarkana, TX-AR","The Villages, FL","Toledo, OH","Topeka, KS","Trenton, NJ","Tucson, AZ","Tulsa, OK","Tuscaloosa, AL","Tyler, TX","Utica-Rome, NY","Valdosta, GA","Vallejo-Fairfield, CA","Victoria, TX","Vineland-Bridgeton, NJ","Virginia Beach-Norfolk-Newport News, VA-NC","Visalia-Porterville, CA","Waco, TX","Walla Walla, WA","Warner Robins, GA","Washington-Arlington-Alexandria, DC-VA-MD-WV","Waterloo-Cedar Falls, IA","Watertown-Fort Drum, NY","Wausau, WI","Weirton-Steubenville, WV-OH","Wenatchee, WA","Wheeling, WV-OH","Wichita, KS","Wichita Falls, TX","Williamsport, PA","Wilmington, NC","Winchester, VA-WV","Winston-Salem, NC","Worcester, MA-CT","Yakima, WA","York-Hanover, PA","Youngstown-Warren-Boardman, OH-PA","Yuba City, CA","Yuma, AZ"]
-var searchresults = document.getElementById("myUL")
-for (i=0;i<msas.length;i++){
-  var newcity = document.createElement("li");
-  var msa = document.createElement("a");
-  msa.href = "#"
-  msa.onclick = "sendMSA('hi')"//.concat(msas[i]).concat(")")
-  msa.text = msas[i]
-  newcity.appendChild(msa)
-  searchresults.appendChild(newcity)
+// var searchresults = document.getElementById("myUL")
+// for (i=0;i<msas.length;i++){
+//   var newcity = document.createElement("li");
+//   var msa = document.createTextNode(msas[i]);
+//   newcity.appendChild(msa)
+//   newcity.id = "msa"
+//   searchresults.appendChild(newcity)
+// }
+// searchresults.addEventListener("click",function(e) {
+//     // e.target is our targetted element.
+//                 // try doing console.log(e.target.nodeName), it will result LI
+//     if(e.target && e.target.nodeName == "LI") {
+//         console.log(e.target.textContent);
+//     }
+// });
+function autocomplete(inp, arr, num) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              custom_msa(num);
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+});
 }
 
+</script>
+<script>
+autocomplete(document.getElementById("myInput1"), msas,1);
+autocomplete(document.getElementById("myInput2"), msas,2);
+autocomplete(document.getElementById("myInput3"), msas,3);
 </script>
 </body>
 
