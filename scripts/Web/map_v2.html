@@ -111,6 +111,13 @@
       return sum;
     }
 
+    function clear_boxes(){
+      for (i=0;i<3;i++){
+        document.getElementById("myInput".concat(i+1)).value = ""
+        submit_msa("",i+1)
+      }
+    }
+
     //Function to change a parameter value (using sliders)
     function change_val(param,opt=0) {
       var params;
@@ -270,6 +277,9 @@ input[type=submit] {
     <input id="myInput3" type="text" name="msa" placeholder="Select City 3">
   </div>
   </form>
+  <div class="slidecontainer" style = "display: inline-block;vertical-align:middle ;margin:0;padding-left:50px;">
+  <button onclick = "clear_boxes()" style = "display: inline-block; margin:0; vertical-align: top"> Clear </button>
+</div>
     <!-- Map Container -->
     <div id="vizContainer" style="width: 1200px; float:center;"></div>
     <!-- Sliders -->
