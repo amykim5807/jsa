@@ -72,13 +72,22 @@
     var params_li = ["Commute","Crime","Housing"];
     var paramlabels_li = ["% Workers with <30 min commute","Violent Crimes per 10000","Average Houseprice"]
 
-    //Function to help send data to tableau (select city)
-    function custom_msa(msa_num){
-      var id_msa = "myInput".concat(msa_num)
-      var msa_text = document.getElementById(id_msa).value
-      submit_msa(msa_text,msa_num)
-    }
+    // //Function to help send data to tableau (select city)
+    // function custom_msa(msa_num){
+    //   var id_msa = "myInput".concat(msa_num)
+    //   var msa_text = document.getElementById(id_msa).value
+    //   submit_msa(msa_text,msa_num)
+    // }
 
+    function submit_all_msas(){
+      for (i=1;i<=3;i++){
+        var id_msa = "myInput".concat(i)
+        text = document.getElementById(id_msa).value
+        if (text != "Select City ".concat(i)){
+          submit_msa(text,i)
+        }
+      }
+    }
     //Helper function to reset parameter values to original values
     function reset_params(){
       for (i=0;i<params0.length;i++){
@@ -150,6 +159,23 @@
     }
     </script>
     <style>
+    #send_data{
+      background-color: white;
+      border-radius: 8px;
+      border: 2px solid#e7e7e7;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      width: 125px;
+      }
+    #send_data:hover{
+      background-color: #e7e7e7; /* Green */
+      color: black;
+    }
+
     .panel {
       width:100%;
       display: none;
@@ -265,26 +291,27 @@ input[type=submit] {
     <!-- Map Container -->
     <div id="vizContainer" style="width: 1200px; height: 1000px; float:center;"></div>
 
-<form autocomplete="off" action="custom_msa(1)" style = "display: inline-block; margin:0; width:300px">
+<form autocomplete="off" style = "display: inline-block; margin:0; width:300px">
 <div class="autocomplete" style="width:300px; padding:10px;">
 <input id="myInput1" type="text" name="msa" placeholder="Select City 1">
 </div>
 </form>
 
-<form autocomplete="off" action="custom_msa(2)" style = "display: inline-block; margin:0; width:300px">
+<form autocomplete="off" style = "display: inline-block; margin:0; width:300px">
 <div class="autocomplete" style="width:300px; padding:10px;">
 <input id="myInput2" type="text" name="msa" placeholder="Select City 2">
 </div>
 </form>
 
-<form autocomplete="off" action="custom_msa(3)" style = "display: inline-block; margin:0; width:300px">
+<form autocomplete="off" style = "display: inline-block; margin:0; width:300px">
 <div class="autocomplete" style="width:300px; padding:10px;">
 <input id="myInput3" type="text" name="msa" placeholder="Select City 3">
 </div>
 </form>
 
-<div class="slidecontainer" style = "display: inline-block; margin:0; padding-left: 20px; padding-top: 10px; vertical-align: top">
-<button onclick = "clear_boxes()" style = "display: inline-block; margin:0; vertical-align: top"> Clear Cities </button>
+<div class="slidecontainer" style = "display: inline-block; vertical-align:middle; margin:0; padding-left:20px; ">
+<button id="send_data" onclick = "submit_all_msas()" > Submit Cities </button>
+<button id="send_data" onclick = "clear_boxes()"> Clear Cities </button>
 </div>
 
 
@@ -292,7 +319,7 @@ input[type=submit] {
     <div class="slidecontainer" style = "width: 1200px; height: 280px;">
 
       <div class="containerDiv" style = "float:left; width:300px; padding-left: 10px; padding-top: 10px; padding-right: 13px">
-      <button id = "Population_num" class = "accordion"> Population 25-64: 33% </button>
+      <button id = "Population_num" class = "accordion"> Population: 33% </button>
 
       <input type="range" min="0" max="100" value="33" class="slider" id="Population" oninput = "change_val('Population')">
       </div>
@@ -325,9 +352,9 @@ input[type=submit] {
       </div>
       </div>
 
-      <div class="slidecontainer" style = "display: inline-block; vertical-align:middle; margin:0; padding-left:20px; padding-top:10px;">
-      <button onclick = "submit_params()"> Submit Weights </button>
-      <button onclick = "reset_params()"> Reset Weights </button>
+      <div class="slidecontainer" style = "display: inline-block; vertical-align:middle; margin:0; padding-left:20px;padding-left:20px; padding-top:30px;">
+      <button id="send_data" onclick = "submit_params()"> Submit Weights </button>
+      <button id="send_data" onclick = "reset_params()"> Reset Weights </button>
       </div>
 
 <script>
@@ -400,7 +427,7 @@ function autocomplete(inp, arr, num) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              custom_msa(num);
+              // custom_msa(num);
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
